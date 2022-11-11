@@ -19,13 +19,17 @@ template <typename T, size_t N = 2> T fnPower(const T& a) {
 
 int main()
 {
-    // auto v1 = fnSquare(5);
-    // cout << v1 << ',' << typeid(v1).name() << endl;
-    // auto v2 = fnSquare<double>(5.1);
-    // cout << v2 << ',' << typeid(v2).name() << endl;
-    // cout << fnDivid<double, int>( 3, 5) << endl;
-    cout << fnPower(5) << endl;
-    cout << fnPower<int, 4>(5) << endl;
+    auto v1 = fnSquare(5);
+    cout << v1 << ',' << typeid(v1).name() << endl;
+    auto v2 = fnSquare<double>(5.2);
+    cout << v2 << ',' << typeid(v2).name() << endl;
+    cout << fnDivid<double, int>( 3, 5) << endl;
+    cout << fnPower<int>(5) << endl;
     cout << fnPower<int, 3>(5) << endl;
-    cout << fnPower<int , 1>(5) << endl;
+    
+// 25,i
+// 27.04,d
+// 0.6
+// 25
+// 125
 }

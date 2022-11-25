@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'members.apps.MembersConfig',
+    'dust_checker.apps.DustCheckerConfig',
 ]
 
 MIDDLEWARE = [

@@ -6,24 +6,31 @@
           <div class="col py-5">
             <div class="pt-4" style="font-family: 'Liu Jian Mao Cao', cursive;"> <h1>洞心</h1></div>
             <h2 style="font-family: 'East Sea Dokdo', cursive;">동심</h2>
+            <p><form action ="{%url 'app1:charts'%}">
+              <p><select onchange="this.form.submit()" name="sidoName">
+                <option value="">시도 이름</option>
+                <option value="대구">대구</option>
+              </select></p>
+            </form></p>
           </div>
+          
       </div>
       <div class="row">
         <div class="col-sm-6 my-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">실시간 미세먼지 정보</h5>
+              {%block apis%}
+              {%endblock apis%}
             </div>
           </div>
         </div>
         <div class="col-sm-6 my-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">미세먼지 시나리오</h5>
+              {% block synario %}
+              {% endblock synario %}
             </div>
           </div>
         </div>

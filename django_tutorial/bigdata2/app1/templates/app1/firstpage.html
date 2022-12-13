@@ -1,0 +1,24 @@
+{% extends 'app1/body.html' %}
+{% block headcenter %}
+
+{% csrf_token %}
+    <p><form action ="{%url 'app1:second'%}" >
+        <p><select onchange="this.form.submit()" name="sidoName">
+            <option value="">시도 이름</option>
+            {% for SiDo in sidoName %}
+            <option value="{{SiDo}}"> {{SiDo}} </option>
+            {% endfor %}
+        </select></p>
+    </form></p>
+{% endblock headcenter %}
+    
+
+{%block apis%}
+
+
+{%endblock apis%}
+
+{% block synario %}
+
+
+{% endblock synario %}

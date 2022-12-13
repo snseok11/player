@@ -1,0 +1,58 @@
+{% extends 'app1/body.html' %}
+{% block headcenter %}
+
+{% csrf_token %}
+
+    <p><form action ="{%url 'app1:second' %} " >
+        <p><select onchange="this.form.submit()" name="sidoName">
+            <option value="">{{sidoName}}</option>
+            {% for SiDo in sidoNames %}
+            <option value="{{SiDo}}"> {{SiDo}} </option>
+            {% endfor %}
+        </select></p>
+    </form></p>
+    <p><form action ="{%url 'app1:final' %} " >
+        <p><select onchange="this.form.submit()" name="sidoName">
+            <option value=""> 지역이름 </option>
+            {% for station_name,pm10 in station_pm10.items %}
+            <option value="{{station_name}}"> {{station_name}} </option>
+            {% endfor %}
+        </select></p>
+    </form></p>
+{% endblock headcenter %}
+    
+
+{%block apis%}
+{% for station_name,pm10 in station_pm10.items %}
+    
+{% endfor %}
+<script>
+    const label = "{{station_pm10.keys}}";
+    const data = {
+        labels = label,
+        datasets = [{
+            label : '',
+            borderColor : 'rgb(75, 192, 192)',
+            data :
+        }]
+    };
+    
+    
+    const config = {
+        type : 'line',
+        data : data,
+        option : {},
+    };
+    const mychart = new Chart(document.getElementById('api_chart_id'),config);
+</script>
+<canvas id = "api_chart_id">
+</canvas>
+
+
+
+{%endblock apis%}
+
+{% block synario %}
+
+
+{% endblock synario %}

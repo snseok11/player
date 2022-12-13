@@ -1,8 +1,6 @@
 {% extends 'app1/body.html' %}
 {% block headcenter %}
-
 {% csrf_token %}
-
     <p><form action ="{%url 'app1:second' %} " >
         <p><select onchange="this.form.submit()" name="sidoName">
             <option value="">{{sidoName}}</option>
@@ -12,7 +10,7 @@
         </select></p>
     </form></p>
     <p><form action ="{%url 'app1:final' %} " >
-        <p><select onchange="this.form.submit()" name="sidoName">
+        <p><select onchange="this.form.submit()" name="stationName">
             <option value=""> 지역이름 </option>
             {% for station_name,pm10 in station_pm10.items %}
             <option value="{{station_name}}"> {{station_name}} </option>
@@ -23,30 +21,30 @@
     
 
 {%block apis%}
-{% for station_name,pm10 in station_pm10.items %}
-    
-{% endfor %}
-<script>
-    const label = "{{station_pm10.keys}}";
-    const data = {
-        labels = label,
-        datasets = [{
-            label : '',
-            borderColor : 'rgb(75, 192, 192)',
-            data :
-        }]
-    };
-    
-    
-    const config = {
-        type : 'line',
-        data : data,
-        option : {},
-    };
-    const mychart = new Chart(document.getElementById('api_chart_id'),config);
+<script style="width:900px height:800px">
+    var label = new Array();
+    var data = new Array();
+
+    {% for key,value in station_pm10.items %}
+        label.push('{{key}}');
+        data.push('{{value}}');
+    {% endfor %}
+    var ctx = document.getElementById('api_chart_id');
+    var mychart = new Chart(ctx,{
+        type : 'line'
+        data : {
+            labels:label,
+            datasets : [{
+                label : '미세먼지 수치',
+                borderColor : 'rgb(255, 99, 132)',
+                data : data
+            }]
+        }
+        options : {}
+    });
 </script>
-<canvas id = "api_chart_id">
-</canvas>
+<div><canvas id = "api_chart_id">
+</canvas></div>
 
 
 

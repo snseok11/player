@@ -1,1 +1,58 @@
 {% extends 'app1/secondpage.html' %}
+{% block headcenter %}
+{% csrf_token %}
+    <p><form action ="{%url 'app1:second' %} " >
+        <p><select onchange="this.form.submit()" name="sidoName">
+            <option value="">{{sidoName}}</option>
+            {% for SiDo in sidoNames %}
+            <option value="{{SiDo}}"> {{SiDo}} </option>
+            {% endfor %}
+        </select></p>
+    </form></p>
+    <p><form action ="{%url 'app1:final' %} " >
+        <p><select onchange="this.form.submit()" name="stationName">
+            <option value=""> 지역이름 </option>
+            {% for station_name,pm10 in station_pm10.items %}
+            <option value="{{station_name}}"> {{station_name}} </option>
+            {% endfor %}
+        </select></p>
+    </form></p>
+{% endblock headcenter %}
+    
+
+{%block apis%}
+<script style="width:900px; height:800px;" >
+    var label = new Array();
+    var data = new Array();
+
+    {% for key,value in station_pm10.items %}
+        label.push('{{key}}');
+        data.push('{{value}}');
+    {% endfor %}
+    var ctx = document.getElementById("api_chart_id");
+    var chart = new Chart(ctx,{
+        type : 'line',
+        data : {
+            labels : label ,
+            datasets : [{
+                fill : false,
+                label : '미세먼지 수치',
+                borderColor : 'rgb(255, 99, 132)',
+                data : data,
+                tension :0.1
+            }]
+        },
+        options : {}
+    });
+</script>
+<div><canvas id = "api_chart_id">
+</canvas></div>
+
+
+
+{%endblock apis%}
+
+{% block synario %}
+
+
+{% endblock synario %}

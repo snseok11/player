@@ -17,10 +17,11 @@ sidoNames = {"서울":"서울",
             "경남":"경남",
             "경기":"경기",}
 
+
+
+
 def first_page(request) :
     
-#     sido = ["충북","충남","제주","전북","전남","인천","울산","세종","서울","부산","대전","대구","광주","경북","경남","경기","강원",
-# ]
     return render(request, 'app1/firstpage.html', {"sidoName":sidoNames})
 
 

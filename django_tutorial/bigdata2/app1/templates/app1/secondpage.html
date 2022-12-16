@@ -1,26 +1,23 @@
 {% extends 'app1/body.html' %}
 {% block headcenter %}
 {% csrf_token %}
+
     <p><form action ="{%url 'app1:second' %}">
-        <p><select onchange="this.form.submit()" name="sidoName">
-            <option value="">{{sidoName}}</option>
+        <p><select onchange="this.form.submit()" name="select_sidoName">
+            <option value="{{selected_sidoName}}">{{selected_sidoName}}</option>
             {% for SiDo in sidoNames %}
-            <option value="{{SiDo}}"> {{SiDo}} </option>
+            <option value="{{SiDo}}">{{SiDo}}</option>
             {% endfor %}
         </select></p>
-    </form></p>
-    <p><form action ="{%url 'app1:final' %}">
-        <p><select onchange="this.form.submit()" name="stationName">
+        <p><select onchange="this.form.submit()" name="selected_stationName">
             <option value=""> 지역이름 </option>
-            {% for station_name,pm10 in station_pm10.items %}
-            <option value="{{station_name}}"> {{station_name}} </option>
+            {% for station_name,pm10 in selected_sido_stations_pm10.items %}
+            <option value="{{station_name}}"> {{station_name}}</option>
             {% endfor %}
         </select></p>
     </form></p>
+    
 {% endblock headcenter %}
-
-
-
 
 {%block apis%}
 <canvas id = "line-chart" width = "400" height = "200"></canvas>
@@ -28,7 +25,7 @@
     var label = new Array();
     var data = new Array();
 
-    {% for key,value in station_pm10.items %}
+    {% for key,value in selected_sido_stations_pm10.items %}
         {% if value == '-' %}
             data.push(0);
         {% else %}
@@ -51,7 +48,7 @@
 
 
 {% block synario %}
-
+secondpage
 
 
 {% endblock synario %}

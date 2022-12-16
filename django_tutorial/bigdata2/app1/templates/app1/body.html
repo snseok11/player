@@ -32,8 +32,26 @@
             </div>
           </div>
         </div>
-        {% block takeit %}{% endblock takeit %}
-        
+        <div class="col-sm-6 my-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">1번째 PIVOT</h5>
+              {% block first_pivot%}
+              
+              {% endblock first_pivot %}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 my-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">2번째 PIVOT</h5>
+              {% block second_pivot %}
+              
+              {% endblock second_pivot %}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

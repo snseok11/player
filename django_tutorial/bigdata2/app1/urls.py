@@ -6,5 +6,4 @@ app_name = 'app1'
 urlpatterns = [
     path('', views.first_page, name="first"),
     path('second/', views.second_page, name="second"),
-    path('final', views.final_page, name="final"),
 ]

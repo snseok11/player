@@ -1,58 +1,55 @@
-{% extends 'app1/secondpage.html' %}
+{% extends 'app1/body.html' %}
 {% block headcenter %}
 {% csrf_token %}
-    <p><form action ="{%url 'app1:second' %} " >
-        <p><select onchange="this.form.submit()" name="sidoName">
-            <option value="">{{sidoName}}</option>
+    <p><form action ="{%url 'app1:second' %}">
+        <p><select onchange="this.form.submit()" name="select_sidoName">
+            <option value="{{selected_sidoName}}">{{selected_sidoName}}</option>
             {% for SiDo in sidoNames %}
-            <option value="{{SiDo}}"> {{SiDo}} </option>
+            <option value="{{SiDo}}">{{SiDo}}</option>
+            {% endfor %}
+        </select></p>
+        <p><select onchange="this.form.submit()" name="selected_stationName">
+            <option value=""> {{selected_stationName}} </option>
+            {% for station_name,pm10 in selected_sido_stations_pm10.items %}
+            <option value="{{station_name}}"> {{station_name}}</option>
             {% endfor %}
         </select></p>
     </form></p>
-    <p><form action ="{%url 'app1:final' %} " >
-        <p><select onchange="this.form.submit()" name="stationName">
-            <option value=""> 지역이름 </option>
-            {% for station_name,pm10 in station_pm10.items %}
-            <option value="{{station_name}}"> {{station_name}} </option>
-            {% endfor %}
-        </select></p>
-    </form></p>
-{% endblock headcenter %}
     
+{% endblock headcenter %}
 
 {%block apis%}
-<script style="width:900px; height:800px;" >
+<canvas id = "line-chart" width = "400" height = "200"></canvas>
+<script>
     var label = new Array();
     var data = new Array();
 
-    {% for key,value in station_pm10.items %}
+    {% for key,value in selected_station_data_pm10.items %}
+        {% if value == '-' %}
+            data.push(0);
+        {% else %}
+            data.push({{value}})
+        {% endif %}
         label.push('{{key}}');
-        data.push('{{value}}');
     {% endfor %}
-    var ctx = document.getElementById("api_chart_id");
-    var chart = new Chart(ctx,{
-        type : 'line',
-        data : {
-            labels : label ,
-            datasets : [{
-                fill : false,
-                label : '미세먼지 수치',
-                borderColor : 'rgb(255, 99, 132)',
-                data : data,
-                tension :0.1
+    var chart = new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+        labels: label,
+        datasets: [{
+            data : data,
+            fill : false
             }]
-        },
-        options : {}
+        }
     });
 </script>
-<div><canvas id = "api_chart_id">
-</canvas></div>
-
-
-
 {%endblock apis%}
+
 
 {% block synario %}
 
+finalpage
 
 {% endblock synario %}
+
+

@@ -3,9 +3,9 @@
 
 {% csrf_token %}
     <p><form action ="{%url 'app1:second'%}" >
-        <p><select onchange="this.form.submit()" name="sidoName">
+        <p><select onchange="this.form.submit()" name="select_sidoName">
             <option value="">시도 이름</option>
-            {% for SiDo in sidoName %}
+            {% for SiDo in sidoNames %}
             <option value="{{SiDo}}"> {{SiDo}} </option>
             {% endfor %}
         </select></p>

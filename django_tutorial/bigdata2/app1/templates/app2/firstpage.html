@@ -2,7 +2,7 @@
 {% block headcenter %}
 
 {% csrf_token %}
-    <p><form action ="{%url 'app1:second'%}" >
+    <p><form action ="{%url 'app1:test_1'%}" >
         <p><select onchange="this.form.submit()" name="select_sidoName">
             <option value="">시도 이름</option>
             {% for SiDo in sidoNames %}

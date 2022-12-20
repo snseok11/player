@@ -1,7 +1,7 @@
 {% extends 'app1/body.html' %}
 {% block headcenter %}
 {% csrf_token %}
-    <p><form action ="{%url 'app1:second' %}">
+    <p><form action ="{%url 'app1:test_2' %}">
         <p><select onchange="this.form.submit()" name="select_sidoName">
             <option value="{{selected_sidoName}}">{{selected_sidoName}}</option>
             {% for SiDo in sidoNames %}

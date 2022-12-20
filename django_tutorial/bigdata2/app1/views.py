@@ -1,6 +1,11 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .api import check_air
+from .api import check_air_1
 from .api import check_air_2
+#from .api import real_time
+#from .api import real_time_2
+#from .models import checkair_1
+#from .models import checkair_2
+
 sidoNames = {"서울":"서울",
             "충남":"충남",
             "제주":"제주",
@@ -24,11 +29,18 @@ def first_page(request) :
 
 def second_page(request):
     selected_sidoName = request.GET.get('select_sidoName')
-    selected_sido_statioins_pm10= check_air(selected_sidoName)
+    selected_sido_statioins_pm10= check_air_1(selected_sidoName)
     if request.GET.get('selected_stationName') == '' :
         return render(request, 'app1/secondpage.html', {'sidoNames': sidoNames, 'selected_sidoName' : selected_sidoName, 'selected_sido_stations_pm10' : selected_sido_statioins_pm10 })
-    else : 
+    else :
         selected_stationName = request.GET.get('selected_stationName')
         selected_station_data_pm10 = check_air_2(selected_stationName)
-        #print(selected_station_data_pm10)
         return render(request, 'app1/finalpage.html', {'sidoNames': sidoNames, 'selected_sidoName' : selected_sidoName, 'selected_sido_stations_pm10' : selected_sido_statioins_pm10, 'selected_stationName' : selected_stationName, 'selected_station_data_pm10' : selected_station_data_pm10})
+    
+#def test_1(request):
+    
+    
+ #  return
+
+#def test_2(request):
+    #return

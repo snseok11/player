@@ -77,16 +77,16 @@ WSGI_APPLICATION = 'bigdata2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#DATABASES = {
-    #'default': {
-     #   'ENGINE': 'django.db.backends.mysql',
-      #  'NAME': 'bigdata_db',
-       # 'USER' : 'susk',
-        #'PASSWORD' : '949551',
-        #'HOST' : 'localhost',
-        #'PORT':'3306'
-    #}
-#}
+# DATABASES = {
+#     'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'bigdata_db',
+#        'USER' : 'susk',
+#         'PASSWORD' : '9495',
+#         'HOST' : 'localhost',
+#         'PORT':'3306'
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',

@@ -2,32 +2,29 @@ from urllib.parse import urlencode, unquote, quote_plus
 import requests
 from bs4 import BeautifulSoup
 from time import time, localtime
-#from .models import checkair_1
-#from .models import checkair_2
+# from .models import checkair_1
+# from .models import checkair_2
 
 
-#def real_time (request) :
- #   a = time()
-  #  localtime_kr = localtime(a)
-   # if localtime_kr.tm_min == '1' :
-    #    checkair_1.objects.all().delete()
-     #   model_input_dict = check_air_1(request)
-      #  for i,j in model_input_dict :
-       #     checkair_1(station=i , pm10=j).save
-    #else :
-     #   return None
-    
+# def real_time (request) :
+#    a = time()
+#    localtime_kr = localtime(a)
+#    if localtime_kr.tm_min == '1' :
+#        checkair_1.objects.all().delete()
+#        model_input_dict = check_air_1(request)
+#        for i,j in model_input_dict :
+#            checkair_1(station=i , pm10=j).save
 
-#def real_time_2(request) :
-    #a = time()
-    #localtime_kr = localtime(a)
-    #if localtime_kr.tm_min == '1' :
-     #   checkair_2.objects.all().delete()
-      #  model_input_dict = check_air_2(request)
-       # for i,j in model_input_dict :
-        #    checkair_2(data_time=i , pm10=j).save
-    #else : 
-     #   return None
+# def real_time_2(request) :
+#     a = time()
+#     localtime_kr = localtime(a)
+#     if localtime_kr.tm_min == '1' :
+#        checkair_2.objects.all().delete()
+#        model_input_dict = check_air_2(request)
+#        for i,j in model_input_dict :
+#            checkair_2(data_time=i , pm10=j).save
+#     else : 
+#        return None
 
 serviceKey = "0eC9FQ3sjJfOFgDhUwnwj%2BtT2FBCBEKAJQV1RwtgxJxTEplfXC%2FuV7L%2BXIi2b5SnYsfikgaWL08KHczUyqqfjQ%3D%3D"
 serviceKeyDecoded = unquote(serviceKey, 'UTF-8')
